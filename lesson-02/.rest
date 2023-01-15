@@ -1,0 +1,13 @@
+// Local Host
+GET http://localhost:8080/contacts
+####
+GET http://localhost:8080/contacts/63c33e8967094a175b49dfe9
+###
+GET http://localhost:8080/contacts/search?id=63c33e8967094a175b49dfe9
+
+// Production
+GET https://cse341-lesson02.onrender.com/contacts
+###
+GET https://cse341-lesson02.onrender.com/contacts/63c33e8967094a175b49dfe9
+###
+GET https://cse341-lesson02.onrender.com/contacts/search?id=63c33e8967094a175b49dfe9

@@ -1,7 +1,7 @@
 {
   "name": "lesson-02",
   "version": "1.0.0",
-  "description": "REST Clients, GET Requests, Node Architecture",
+  "description": "Lesson 02 Assignment",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -12,6 +12,16 @@
     "type": "git",
     "url": "git+https://github.com/spencer-rafada/cse341.git"
   },
+  "keywords": [
+    "API",
+    "MongoDB",
+    "Node",
+    "Architecture",
+    "GET",
+    "Requests",
+    "REST",
+    "Clients"
+  ],
   "author": "Spencer Rafada",
   "license": "ISC",
   "bugs": {
