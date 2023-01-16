@@ -8,7 +8,7 @@ const getContacts = async (req, res, next) => {
     .collection("contacts")
     .find();
 
-  console.log(result);
+  // console.log(result);
   result.toArray().then((items) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(items);
