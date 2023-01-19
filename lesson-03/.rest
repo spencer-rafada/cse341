@@ -1,0 +1,31 @@
+// Local Host
+GET http://localhost:8080/contacts HTTP/1.1
+####
+GET http://localhost:8080/contacts/63c33e8967094a175b49dfe9 HTTP/1.1
+###
+GET http://localhost:8080/contacts/search?id=63c33e8967094a175b49dfe9 HTTP/1.1
+### 
+POST http://localhost:8080/contacts/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Ronald",
+    "lastName": "Coello",
+    "email": "roncoe@byui.edu",
+    "favoriteColor": "black",
+    "birthday": "01-15-1994"
+}
+###
+PUT http://localhost:8080/contacts/63c978e41d4b760d39475ec8 HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Ronaldo"
+}
+###
+// Production
+GET https://cse341-lesson02.onrender.com/contacts HTTP/1.1
+###
+GET https://cse341-lesson02.onrender.com/contacts/63c33e8967094a175b49dfe9 HTTP/1.1
+###
+GET https://cse341-lesson02.onrender.com/contacts/search?id=63c33e8967094a175b49dfe9 HTTP/1.1
