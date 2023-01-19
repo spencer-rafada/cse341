@@ -1,11 +1,11 @@
-var express = require("express");
+var express = require('express');
 var app = express();
-var cors = require("cors");
-const mongodb = require("./db/connect");
+var cors = require('cors');
+const mongodb = require('./db/connect');
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-app.use("/", require("./routes"));
+app.use('/', require('./routes'));
 
 mongodb.initDb((err) => {
   if (err) {
