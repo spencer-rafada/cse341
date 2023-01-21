@@ -1,7 +1,7 @@
 // Local Host
 GET http://localhost:8080/contacts HTTP/1.1
 ####
-GET http://localhost:8080/contacts/63cc030809de4c3cc280e262 HTTP/1.1
+GET http://localhost:8080/contacts/63cc298490a922ce51799792 HTTP/1.1
 ###
 GET http://localhost:8080/contacts/search?id=63c33e8967094a175b49dfe9 HTTP/1.1
 ### 
@@ -9,25 +9,49 @@ POST http://localhost:8080/contacts/create HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Jason",
-    "lastName": "Miryo",
-    "email": "jmir@byui.edu",
-    "favoriteColor": "black",
-    "birthday": "01-15-1994"
+    "firstName": "Neil",
+    "lastName": "Mariano",
+    "email": "nmariano@byui.edu",
+    "favoriteColor": "gray",
+    "birthday": "02-15-1994"
 }
 ###
-PUT http://localhost:8080/contacts/63cc01db22e82529200e4f5a HTTP/1.1
+PUT http://localhost:8080/contacts/63cc298490a922ce51799792 HTTP/1.1
 Content-Type: application/json
 
 {
-  "firstName": "Ronaldo"
+  "firstName": "John"
 }
 ###
-DELETE http://localhost:8080/contacts/63cc01db22e82529200e4f5a HTTP/1.1
+DELETE http://localhost:8080/contacts/63cc298490a922ce51799792 HTTP/1.1
 ###
+
+
 // Production
-GET https://cse341-lesson02.onrender.com/contacts HTTP/1.1
+GET https://lesson03-contacts-v96p.onrender.com/contacts HTTP/1.1
 ###
-GET https://cse341-lesson02.onrender.com/contacts/63c33e8967094a175b49dfe9 HTTP/1.1
+GET https://lesson03-contacts-v96p.onrender.com/contacts/63cc29f8bac89060246eda69 HTTP/1.1
 ###
-GET https://cse341-lesson02.onrender.com/contacts/search?id=63c33e8967094a175b49dfe9 HTTP/1.1
+GET https://lesson03-contacts-v96p.onrender.com/contacts/search?id=63cc14480fe27dc20bdb0a10 HTTP/1.1
+###
+POST https://lesson03-contacts-v96p.onrender.com/contacts/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Res",
+    "lastName": "Ry",
+    "email": "resry@byui.edu",
+    "favoriteColor": "green",
+    "birthday": "01-29-1998"
+}
+###
+PUT https://lesson03-contacts-v96p.onrender.com/contacts/63cc29f8bac89060246eda69 HTTP/1.1
+Content-Type: application/json
+
+{
+  "lastName": "Len",
+  "email": "lenry@gmail.com"
+}
+###
+DELETE https://lesson03-contacts-v96p.onrender.com/contacts/63cc29f8bac89060246eda69 HTTP/1.1
+###
