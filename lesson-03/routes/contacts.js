@@ -13,4 +13,6 @@ routes.post('/create', contactController.addContact);
 
 routes.put('/:id', contactController.updateContact);
 
+routes.delete('/:id', contactController.deleteContact);
+
 module.exports = routes;

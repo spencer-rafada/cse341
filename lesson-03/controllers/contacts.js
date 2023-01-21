@@ -17,10 +17,12 @@ const getSingle = async (req, res, next) => {
   var o_id = new ObjectId(req.params.id);
   const result = await mongodb.getDb().db('cse341').collection('contacts').find({ _id: o_id });
 
-  result.toArray().then((items) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(items);
-  });
+  (await result.count()) > 0
+    ? result.toArray().then((items) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(items);
+      })
+    : res.status(200).json({ message: `No document found.` });
 };
 
 const searchContact = async (req, res, next) => {
@@ -67,4 +69,32 @@ const updateContact = async (req, res, next) => {
   }
 };
 
-module.exports = { getContacts, getSingle, searchContact, addContact, updateContact };
+// DELETE requests
+const deleteContact = async (req, res, next) => {
+  try {
+    const o_id = new ObjectId(req.params.id);
+    const _ = await mongodb
+      .getDb()
+      .db('cse341')
+      .collection('contacts')
+      .deleteOne({ _id: o_id }, {})
+      .then((result) => {
+        result.deletedCount > 0
+          ? res
+              .status(200)
+              .json({ message: `Document with ID: ${req.params.id} successfully deleted.` })
+          : res.status(404).json({ message: 'No document deleted' });
+      });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  getContacts,
+  getSingle,
+  searchContact,
+  addContact,
+  updateContact,
+  deleteContact
+};
