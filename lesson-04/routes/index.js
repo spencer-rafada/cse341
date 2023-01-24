@@ -1,7 +1,6 @@
 const routes = require('express').Router();
 const swaggerUi = require(`swagger-ui-express`);
 const swaggerDocument = require(`../swagger.json`);
-const { route } = require('./contacts');
 
 routes.get('/', (req, res, next) => {
   res.json('Navigate to /contacts, then /contacts/{_id}, and /contacts/search?id={_id}');
