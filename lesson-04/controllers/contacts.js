@@ -54,7 +54,14 @@ const addContact = async (req, res, next) => {
   }
   */
   try {
-    const result = await mongodb.getDb().db('cse341').collection('contacts').insertOne(req.body);
+    const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday
+    };
+    const result = await mongodb.getDb().db('cse341').collection('contacts').insertOne(contact);
     res.setHeader(`Content-Type`, `application/json`);
     result
       ? res
@@ -80,12 +87,19 @@ const updateContact = async (req, res, next) => {
   }
   */
   try {
+    const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday
+    };
     const o_id = new ObjectId(req.params.id);
     const _ = await mongodb
       .getDb()
       .db('cse341')
       .collection('contacts')
-      .updateOne({ _id: o_id }, { $set: req.body })
+      .updateOne({ _id: o_id }, { $set: contact })
       .then((result) => {
         res.setHeader(`Content-Type`, `application/json`);
         result.modifiedCount > 0
