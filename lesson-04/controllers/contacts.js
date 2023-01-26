@@ -2,8 +2,8 @@ const mongodb = require('../db/connect');
 var ObjectId = require('mongodb').ObjectId;
 
 // GET Requests
-
 const getContacts = async (req, res, next) => {
+  // #swagger.description = 'Gets all of the contacts from the database.'
   const result = await mongodb.getDb().db('cse341').collection('contacts').find();
 
   // console.log(result);
@@ -14,6 +14,7 @@ const getContacts = async (req, res, next) => {
 };
 
 const getSingle = async (req, res, next) => {
+  // #swagger.description = 'Finds contact with the given id using routes parameters.'
   var o_id = new ObjectId(req.params.id);
   const result = await mongodb.getDb().db('cse341').collection('contacts').find({ _id: o_id });
 
@@ -26,6 +27,7 @@ const getSingle = async (req, res, next) => {
 };
 
 const searchContact = async (req, res, next) => {
+  // #swagger.description = 'Finds contact with the given id using query parameters.'
   var o_id = new ObjectId(req.query.id);
   const result = await mongodb.getDb().db('cse341').collection('contacts').find({ _id: o_id });
   result.toArray().then((items) => {
@@ -36,6 +38,21 @@ const searchContact = async (req, res, next) => {
 
 // POST requests
 const addContact = async (req, res, next) => {
+  // #swagger.description = 'Adds a contact to the database.'
+  // #swagger.consumes = ['application/json']
+  /* #swagger.parameters['obj'] = {
+    in: 'body',
+    description: 'Contact schema',
+    required: true,
+    schema: {
+      $firstName: 'John',
+      $lastName: 'Doe',
+      $email: 'jdoe@gmail.com',
+      $favoriteColor: 'red',
+      $birthday: '01-25-2023'
+    },
+  }
+  */
   try {
     const result = await mongodb.getDb().db('cse341').collection('contacts').insertOne(req.body);
     res.setHeader(`Content-Type`, `application/json`);
@@ -51,6 +68,17 @@ const addContact = async (req, res, next) => {
 
 // PUT requests
 const updateContact = async (req, res, next) => {
+  // #swagger.description = 'Finds a contact using the id parameter and updates the contact with the given fields in the body of the request.'
+  // #swagger.consumes = ['application/json']
+  /* #swagger.parameters['obj'] = {
+    in: 'body',
+    description: 'Updates all of the fields indicated from the body',
+    schema: {
+      $firstName: 'Jane',
+      $lastName: 'Mae',
+    },
+  }
+  */
   try {
     const o_id = new ObjectId(req.params.id);
     const _ = await mongodb
@@ -71,6 +99,7 @@ const updateContact = async (req, res, next) => {
 
 // DELETE requests
 const deleteContact = async (req, res, next) => {
+  // #swagger.description = 'Finds a contact using the id parameter and deletes the contact with the same id.'
   try {
     const o_id = new ObjectId(req.params.id);
     const _ = await mongodb

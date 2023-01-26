@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
     "http"
@@ -13,7 +13,7 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "description": "Root endpoint describing what endpoints are available",
         "parameters": [],
         "responses": {
           "200": {
@@ -22,9 +22,16 @@
         }
       }
     },
-    "/contacts/": {
+    "/api-docs": {
       "get": {
         "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/contacts/": {
+      "get": {
+        "description": "Gets all of the contacts from the database.",
         "produces": [
           "application/json"
         ],
@@ -38,7 +45,7 @@
     },
     "/contacts/search": {
       "get": {
-        "description": "",
+        "description": "Finds contact with the given id using query parameters.",
         "produces": [
           "application/json"
         ],
@@ -58,7 +65,7 @@
     },
     "/contacts/{id}": {
       "get": {
-        "description": "",
+        "description": "Finds contact with the given id using routes parameters.",
         "produces": [
           "application/json"
         ],
@@ -77,7 +84,10 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Finds a contact using the id parameter and updates the contact with the given fields in the body of the request.",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -87,6 +97,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Updates all of the fields indicated from the body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "Jane"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Mae"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName"
+              ]
+            }
           }
         ],
         "responses": {
@@ -99,7 +131,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Finds a contact using the id parameter and deletes the contact with the same id.",
         "parameters": [
           {
             "name": "id",
@@ -120,11 +152,53 @@
     },
     "/contacts/create": {
       "post": {
-        "description": "",
+        "description": "Adds a contact to the database.",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Contact schema",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jdoe@gmail.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "01-25-2023"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "favoriteColor",
+                "birthday"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"

@@ -3,7 +3,8 @@ const swaggerUi = require(`swagger-ui-express`);
 const swaggerDocument = require(`../swagger.json`);
 
 routes.get('/', (req, res, next) => {
-  res.json('Navigate to /contacts, then /contacts/{_id}, and /contacts/search?id={_id}');
+  // #swagger.description = 'Root endpoint describing what endpoints are available'
+  res.json('Navigate to /api-docs for API documentation');
 });
 
 routes.use('/contacts', require('./contacts'));

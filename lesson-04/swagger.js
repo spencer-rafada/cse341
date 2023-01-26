@@ -5,7 +5,7 @@ const doc = {
     title: 'My Contacts',
     description: 'Description'
   },
-  host: 'localhost:3000',
+  host: 'localhost:8080',
   schemes: ['http']
 };
 
