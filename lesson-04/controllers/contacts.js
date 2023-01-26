@@ -54,7 +54,8 @@ const addContact = async (req, res, next) => {
   }
   */
   try {
-    const result = await mongodb.getDb().db('cse341').collection('contacts').insertOne(req.body);
+    const contact = JSON.parse(req.body);
+    const result = await mongodb.getDb().db('cse341').collection('contacts').insertOne(contact);
     res.setHeader(`Content-Type`, `application/json`);
     result
       ? res
