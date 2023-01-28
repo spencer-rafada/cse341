@@ -7,7 +7,9 @@
   },
   "host": "contacts-project.onrender.com",
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/": {
       "get": {
@@ -30,7 +32,9 @@
     "/contacts/": {
       "get": {
         "description": "Gets all of the contacts from the database.",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -40,8 +44,12 @@
       },
       "post": {
         "description": "Adds a contact to the database.",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "obj",
@@ -72,7 +80,13 @@
                   "example": "01-25-2023"
                 }
               },
-              "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"]
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "favoriteColor",
+                "birthday"
+              ]
             }
           }
         ],
@@ -89,7 +103,9 @@
     "/contacts/search": {
       "get": {
         "description": "Finds contact with the given id using query parameters.",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -107,7 +123,9 @@
     "/contacts/{id}": {
       "get": {
         "description": "Finds contact with the given id using routes parameters.",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -124,8 +142,12 @@
       },
       "put": {
         "description": "Finds a contact using the id parameter and updates the contact with the given fields in the body of the request.",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -149,7 +171,10 @@
                   "example": "Mae"
                 }
               },
-              "required": ["firstName", "lastName"]
+              "required": [
+                "firstName",
+                "lastName"
+              ]
             }
           }
         ],

@@ -7,7 +7,7 @@ const doc = {
       'This web service allows you to get, add, update, and delete contacts. The purpose of this web service is to develop a well-documented REST API available in production.'
   },
   host: 'contacts-project.onrender.com',
-  schemes: ['http', 'https']
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';
