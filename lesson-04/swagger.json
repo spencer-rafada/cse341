@@ -1,14 +1,15 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My Contacts",
-    "description": "Description",
+    "title": "Contacts Backend Project",
+    "description": "This web service allows you to get, add, update, and delete contacts. The purpose of this web service is to develop a well-documented REST API available in production.",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "contacts-project.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/": {
@@ -39,6 +40,63 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "Adds a contact to the database.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Contact schema",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jdoe@gmail.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "01-25-2023"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "favoriteColor",
+                "birthday"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -143,65 +201,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/contacts/create": {
-      "post": {
-        "description": "Adds a contact to the database.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Contact schema",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "type": "string",
-                  "example": "John"
-                },
-                "lastName": {
-                  "type": "string",
-                  "example": "Doe"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "jdoe@gmail.com"
-                },
-                "favoriteColor": {
-                  "type": "string",
-                  "example": "red"
-                },
-                "birthday": {
-                  "type": "string",
-                  "example": "01-25-2023"
-                }
-              },
-              "required": [
-                "firstName",
-                "lastName",
-                "email",
-                "favoriteColor",
-                "birthday"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
           },
           "404": {
             "description": "Not Found"

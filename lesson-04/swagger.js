@@ -2,11 +2,12 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My Contacts',
-    description: 'Description'
+    title: 'Contacts Backend Project',
+    description:
+      'This web service allows you to get, add, update, and delete contacts. The purpose of this web service is to develop a well-documented REST API available in production.'
   },
-  host: 'localhost:8080',
-  schemes: ['http']
+  host: 'contacts-project.onrender.com',
+  schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
